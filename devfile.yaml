@@ -6,15 +6,4 @@ components:
     container:
       image: quay.io/devfile/php:7.4
       memoryLimit: 2Gi
-    protocols:
-      - name: http
-        port: 8080
-    commands:
-      - name: build
-        actions:
-          - shell:
-              command: "composer install"
-      - name: deploy
-        actions:
-          - shell:
-              command: "php -S 0.0.0.0:8080 -t /workspace"
+

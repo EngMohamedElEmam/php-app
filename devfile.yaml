@@ -1,8 +1,20 @@
 schemaVersion: 2.1.0
 metadata:
-  name: my a-ver
+  name: my-a-ver
 components:
-  - name: tools
+  - name: php-app
     container:
-      image: quay.io/devfile/universal-developer-image:ubi8-3d26fec
+      image: quay.io/devfile/php:7.4
       memoryLimit: 2Gi
+    protocols:
+      - name: http
+        port: 8080
+    commands:
+      - name: build
+        actions:
+          - shell:
+              command: "composer install"
+      - name: deploy
+        actions:
+          - shell:
+              command: "php -S 0.0.0.0:8080 -t /workspace"
